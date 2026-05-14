@@ -1,0 +1,356 @@
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture Specific Information to Fill Out
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\LectureTitle}{My first events}
+\newcommand{\LectureDate}{\today}
+\newcommand{\LectureClassName}{Event Generation}
+\newcommand{\LatexerName}{\href{mbeekvel@nikhef.nl}{Melissa van Beekveld}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+\usepackage{amsmath,amsthm,cancel,hyperref,graphicx,xcolor}
+\usepackage{picinpar,xypic}
+\usepackage{booktabs}
+
+\usepackage{slashed}
+% Change "article" to "report" to get rid of page number on title page
+\usepackage{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{} 
+\usepackage[errorstop]{feynmp-auto}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage,booktabs}
+\usepackage{extramarks}
+\usepackage{chngpage,url,hyperref}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig,amsmath}
+\usepackage{afterpage,textcomp}
+\usepackage{abstract}
+\usepackage[version=3]{mhchem} % for chemical equations
+\usepackage{chemfig} % for drawing chemical compounds
+\usepackage{pgfplots} % for plotting equations
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{multirow}
+
+\usepackage{tabularx}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		otherkeywords={self},             % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false            % 
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+\newcommand{\bra}[1] {\langle{#1}\vert}
+\newcommand{\ket}[1] {\vert{#1}\rangle}
+\newcommand{\braket}[2] {\langle{#1}\vert{#2}\rangle}
+
+%\usepackage{chngcntr}
+%\counterwithin{figure}{section}
+
+\usepackage{tcolorbox}
+
+\usepackage{bbold}
+
+
+\newcommand{\bref}[1]{(\ref{#1})}
+
+\newcommand{\eqn}[1]{(\ref{#1})}
+\newcommand{\be}{\begin{equation}}
+	\newcommand{\ee}{\end{equation}}
+\newcommand{\ben}{\begin{displaymath}}
+	\newcommand{\een}{\end{displaymath}}
+\newcommand{\bea}{\begin{eqnarray}}
+	\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bean}{\begin{eqnarray*}}
+	\newcommand{\eean}{\end{eqnarray*}}
+\newcommand{\nn}{\nonumber \\}
+\newcommand{\ba}{\begin{array}}
+	\newcommand{\ea}{\end{array}}
+\newcommand{\bi}{\begin{itemize}}
+	\newcommand{\ei}{\end{itemize}}
+\def\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+		\raise1pt\hbox{$>$}}}         %greater than or approx. symbol
+\def\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+		\raise1pt\hbox{$<$}}}         %less than or approx. symbol
+
+\usepackage{slashed}
+
+% In case you need to adjust margins:
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% Setup the header and footer
+\pagestyle{fancy}
+\lhead{\LatexerName}
+\chead{\LectureClassName: \LectureTitle}
+\rhead{\LectureDate}
+\lfoot{\lastxmark}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+\newcommand{\enterTopicHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}
+\newcommand{\exitTopicHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1}{}\nobreak}
+
+
+\renewcommand{\contentsname}{{\normalsize Table of Contents}}
+\renewcommand{\abstractname}{\Large \LectureTitle}
+\renewcommand{\absnamepos}{flushleft}
+
+%\numberwithin{equation}{section}
+%\numberwithin{figure}{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+		
+\begin{center}
+{\bf \Large Drell--Yan Production and QCD Radiation with MadGraph }\\[0.3cm]			
+\end{center}
+		
+\section*{Overview}
+
+In this exercise you will study the Drell--Yan process, defined as
+\[
+pp \to e^+ e^- + X
+\]
+where $X$ is any additional radiation at increasing levels of QCD sophistication:
+Born level, fixed-order real emission, and parton shower simulations.
+
+The goal is to understand how QCD radiation affects observables such as
+the invariant mass of the lepton pair ($m_{\ell\ell}$), defined as
+\[
+m_{\ell\ell} = \sqrt{(p_{e^+}^{\mu}+ p_{e^-}^{\mu})(p_{e^+,\mu}+ p_{e^-,\mu})}\,,
+\]
+with $p_{e^+}^{\mu}$, $p_{e^-}^{\mu}$ the four-momenta of the two leptons, 
+the transverse momentum of the lepton pair ($p_{T,\ell\ell}$), defined as
+\[
+p_{T,\ell\ell} = \sqrt{(p_{e^+}^x+p_{e^-}^x)^2 + (p_{e^+}^y+p_{e^-}^y)^2},
+\]
+and the rapidity of the lepton pair ($\eta_{\ell\ell}$), defined as
+\[
+\eta_{\ell\ell}= \frac{1}{2}\ln \frac{(E_{e^+} + E_{e^-})+(p^z_{e^+} + p^z_{e^-})}{(E_{e^+} + E_{e^-})-(p^z_{e^+} + p^z_{e^-})}\,.
+\]
+The first step is to download and install the event generator \href{https://launchpad.net/mg5amcnlo/3.0/3.7.x/+download/MG5_aMC_v3.7.0.tar.gz}{Madgraph}. 
+%
+Click on the link, which should start a download of a \texttt{tar.gz} file. 
+%
+Move the file into this directory, unpack via \texttt{tar -xvzf ...}, and then enter the \texttt{MG5\_aMC\_v3\_7\_0/bin} directory. 
+%
+Run: 
+\begin{verbatim}
+./mg5_amc
+\end{verbatim}
+Congratulations, you are all set to go.%
+%
+\footnote{For now, and remember, compilation issues are part of the game.} 
+
+\section*{Part I: Born-level process $pp \to e^+ e^-$}
+
+We start with the study of the Born-level process for the Drell--Yan production process. 
+
+\begin{enumerate}
+\item Draw all Feynman diagrams that contribute to this process at Born level. 
+\item We may check whether we've drawn the correct diagrams with MadGraph. To this end, generate the Drell--Yan process by running \texttt{./mg5\_amc}  and typing
+\begin{verbatim}
+	generate p p > e+ e-
+\end{verbatim}
+What does \texttt{p} represent?
+Then type
+\begin{verbatim}
+	display diagrams
+\end{verbatim}
+A set of files should open that shows all the diagrams that contribute at Born level. Did you get the same ones? What is the meaning of \texttt{QCD=0, QED=2} in the pictures?
+\item We will now generate events. Type
+\begin{verbatim}
+	output dy-lo
+	launch dy-lo
+\end{verbatim}
+The first of these commands generates a directory \texttt{dy-lo} where it will collect the results, and \texttt{launch} tells MadGraph to start generating events. 
+%
+You then enter a `choice menu', which you can mostly ignore for now. Type
+\begin{verbatim}
+	0
+	set use_syst false
+	set iseed 1
+	0
+\end{verbatim}
+%
+After pressing enter process generation will start, and in about 1 minute MadGraph tells you it is done. 
+%
+What is the Born cross section? Where does the error come from?
+\item Type \texttt{exit} to leave the MadGraph programme. The \texttt{bin} directory now contains a new directory, called \texttt{dy-lo}. In the \texttt{Events/run\_01} directory you can find the generated events as \texttt{unweighted\_events.lhe.gz}.
+%
+You can unpack this file using \texttt{gunzip unweighted\_events.lhe.gz}, and then open it in your favorite plain text editor. 
+%
+Scroll until you see a line starting with \texttt{<event>}. 
+%
+This is where the first Born events start. What type of particle is the initial-state? What are the invariant mass, transverse momentum, and the rapidity of the lepton pair of this event? Compare this to the values you obtain for the next event. 
+
+\item We will now examine the entire \emph{distribution} of these three observables. To this end, first run 
+\begin{verbatim}
+./examine_events.py dy-lo/Events/run_01/unweighted_events.lhe --nevents 2 --verbose
+\end{verbatim}
+This runs the python script in this directory. The argument is the filename for the \texttt{.lhe} file you've just examined. This command will print out the invariant mass, transverse momentum and rapidity of the lepton pair of the first two events. Did you get them right? 
+
+Next we will plot the distribution. Run 
+\begin{verbatim}
+./examine_events.py dy-lo/Events/run_01/unweighted_events.lhe --plot
+\end{verbatim}
+This creates three plots, one for each distribution. 
+%
+Explain the shape of the transverse momentum of the lepton pair, and of the invariant mass spectrum. 
+\item We will now create a second set of born event samples, with slightly different settings. Start up MadGraph again and launch again the \texttt{dy-lo} directory, but now type
+\begin{verbatim}
+	0
+	set use_syst false
+	set iseed 1
+	set param_card mass 23 88.5	 
+	0
+\end{verbatim}
+when entering the `choice menu'. Can you guess what the fourth line does? What happens now to the cross section? 
+
+Plot these results together with the results of the first run by running
+\begin{verbatim}
+./examine_events.py dy-lo/Events/run_01/unweighted_events.lhe
+                                dy-lo/Events/run_02/unweighted_events.lhe --plot 
+\end{verbatim} 
+Explain why (some of) the distributions change. 
+\item In the previous question you changed the mass of the $Z$ boson. You can change other parameters, like widths and couplings. You can also change the values of the renormalisation/factorisation scales, the parton-density functions, and the kinematic ranges of the produced particles to select the region of interest. All of these settings can be found in the \texttt{param.dat} and \texttt{run\_card.dat} files of MadGraph. How would you change the width of the $Z$ boson to twice its SM size, and how would that affect the cross section and the distributions?
+\end{enumerate}
+
+\newpage
+\section*{Part II: Real emission $pp \to e^+ e^- j$}
+We will now add one additional parton to the final state, and examine how this impacts the LO distributions generated so far. 
+\begin{enumerate}
+\item Draw all Feynman diagrams that contribute to the Drell--Yan  process with one parton in the final state. 
+\item We can again check whether we've drawn the right particles. Open MadGraph and type
+\begin{verbatim}
+	generate p p > e+ e- j
+	display diagrams
+\end{verbatim}
+What does \texttt{j} represent? 
+\item Generate events by outputting the result of the diagram generation to a directory called \texttt{dy-nlo} and launch it using the same settings as before, i.e.\
+\begin{verbatim}
+	0
+	set use_syst false
+	set iseed 1
+	0
+\end{verbatim}
+What is the resulting cross section? 
+\item Again plot the three invariants. Which ones changed, and why? 
+\item You can see that the transverse momentum of the lepton pair only starts at a transverse momentum of $20$ GeV. One can change this by setting
+\begin{verbatim}
+set ptl 0
+set ptj 5
+\end{verbatim}
+What happens now to the cross section? Examine the new distributions. This is the first example of observables sensitive to QCD infrared singularities. 
+\item What happens if you set \texttt{ptj=0}? Why? Can thrust the resulting outcome of MadGraph?
+\end{enumerate}
+%	\item $m_{\ell\ell}$ remains largely unchanged (still Z-dominated)
+%	\item $p_T(\ell\ell)$ becomes non-zero and develops a singular behaviour at low $p_T$
+%	\item $\eta(\ell\ell)$ slightly broadens due to recoil effects
+
+\newpage
+\section*{Part III: Parton shower effects}
+
+Until now we have generated `hard' events. We now want to shower these events. For this we first need to install a shower program, which can be done from inside MadGraph by typing
+\begin{verbatim}
+	install pythia8
+\end{verbatim}
+which will download and install the \texttt{Pythia8} shower. 
+%
+This should take $\mathcal{O}(5)$ minutes, so be a bit patient. Ask me/ChatGPT if you run into compilation issues. 
+
+\begin{enumerate}
+\item Launch again the LO DY process, but now activate Pythia by typing
+\begin{verbatim}
+launch dy-lo
+1
+0
+\end{verbatim}
+The second line activates the Pythia8 shower. 
+%
+Then set the following settings for the run
+\begin{verbatim}
+	set use_syst false
+	set iseed 1
+\end{verbatim}
+Make sure that all other settings are set to default (important if you've changed e.g.\ the $Z$ boson mass or width in previous runs, as MadGraph will remember these settings).
+%
+Now modify the Pythia8 command card by adding
+\begin{verbatim}
+	partonlevel:mpi=off
+	hadronlevel:all=off
+	TimeShower:QEDshowerByQ=off
+	TimeShower:QEDshowerByL=off
+	TimeShower:QEDshowerByOther=off
+	SpaceShower:QEDshowerByQ=off
+	SpaceShower:QEDshowerByL=off
+\end{verbatim}
+This turns off MPI and hadronization, in addition to the QED shower of Pythia (as we want to focus purely on the QCD). 
+%
+Examine the total cross section. Did it change with respect to the pure LO cross section? Why (not)?
+\item The output of the shower programme is an \texttt{hepmc.gz} file, together with a \texttt{.log} file. The \texttt{.log} file can be examined in a text-editor. Go to the first line containing \texttt{PYTHIA Event Listing  (complete event)}. Can you compute the invariant mass, transverse momentum and rapidity of the lepton pair pre- and post-showering?
+\item Again these numbers can be checked by running the same script, which will automatically recognize the extension of the file supplied. Did you get the correct values? 
+\item Plot the showered and unshowered events. Are the results as you expect? Why does the distribution of the transverse momentum of the lepton pair go all the way to 0?
+\item The settings above turn on one specific type of shower, namely Pythia's default shower (which is called the \texttt{SimpleShower}). We can also turn on \texttt{Vincia}, which is another type of parton shower (see \href{https://pythia.org/latest-manual/Vincia.html}{this link} for more information). This can be done by setting
+\begin{verbatim}
+PartonShowers:model=2
+Vincia:EWmode=0
+\end{verbatim}
+Which distributions change, and why?
+\end{enumerate}
+	
+\end{document}

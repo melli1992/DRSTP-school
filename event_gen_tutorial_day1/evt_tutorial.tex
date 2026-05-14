@@ -1,0 +1,320 @@
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture Specific Information to Fill Out
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\LectureTitle}{The `hello world' of Monte Carlo}
+\newcommand{\LectureDate}{\today}
+\newcommand{\LectureClassName}{Event Generation}
+\newcommand{\LatexerName}{\href{mbeekvel@nikhef.nl}{Melissa van Beekveld}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+\usepackage{amsmath,amsthm,cancel,hyperref,graphicx,xcolor}
+\usepackage{picinpar,xypic}
+\usepackage{booktabs}
+
+\usepackage{slashed}
+% Change "article" to "report" to get rid of page number on title page
+\usepackage{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{} 
+\usepackage[errorstop]{feynmp-auto}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage,booktabs}
+\usepackage{extramarks}
+\usepackage{chngpage,url,hyperref}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig,amsmath}
+\usepackage{afterpage,textcomp}
+\usepackage{abstract}
+\usepackage[version=3]{mhchem} % for chemical equations
+\usepackage{chemfig} % for drawing chemical compounds
+\usepackage{pgfplots} % for plotting equations
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{multirow}
+
+\usepackage{tabularx}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		basicstyle=\ttm,
+		otherkeywords={self},             % Add keywords here
+		keywordstyle=\ttb\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\ttb\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false            % 
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+\newcommand{\bra}[1] {\langle{#1}\vert}
+\newcommand{\ket}[1] {\vert{#1}\rangle}
+\newcommand{\braket}[2] {\langle{#1}\vert{#2}\rangle}
+
+%\usepackage{chngcntr}
+%\counterwithin{figure}{section}
+
+\usepackage{tcolorbox}
+
+\usepackage{bbold}
+
+
+\newcommand{\bref}[1]{(\ref{#1})}
+
+\newcommand{\eqn}[1]{(\ref{#1})}
+\newcommand{\be}{\begin{equation}}
+	\newcommand{\ee}{\end{equation}}
+\newcommand{\ben}{\begin{displaymath}}
+	\newcommand{\een}{\end{displaymath}}
+\newcommand{\bea}{\begin{eqnarray}}
+	\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bean}{\begin{eqnarray*}}
+	\newcommand{\eean}{\end{eqnarray*}}
+\newcommand{\nn}{\nonumber \\}
+\newcommand{\ba}{\begin{array}}
+	\newcommand{\ea}{\end{array}}
+\newcommand{\bi}{\begin{itemize}}
+	\newcommand{\ei}{\end{itemize}}
+\def\gsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+		\raise1pt\hbox{$>$}}}         %greater than or approx. symbol
+\def\lsim{\mathrel{\rlap{\lower4pt\hbox{\hskip1pt$\sim$}}
+		\raise1pt\hbox{$<$}}}         %less than or approx. symbol
+
+\usepackage{slashed}
+
+% In case you need to adjust margins:
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% Setup the header and footer
+\pagestyle{fancy}
+\lhead{\LatexerName}
+\chead{\LectureClassName: \LectureTitle}
+\rhead{\LectureDate}
+\lfoot{\lastxmark}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+\newcommand{\enterTopicHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}
+\newcommand{\exitTopicHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+	\nobreak\extramarks{#1}{}\nobreak}
+
+
+\renewcommand{\contentsname}{{\normalsize Table of Contents}}
+\renewcommand{\abstractname}{\Large \LectureTitle}
+\renewcommand{\absnamepos}{flushleft}
+
+%\numberwithin{equation}{section}
+%\numberwithin{figure}{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+		
+\begin{center}
+{\bf \Large The `hello world' of Monte Carlo}\\[0.3cm]			
+\end{center}
+		
+\section*{Part 1: The  $e^+e^- \to q\bar{q}$ differential and total cross section}
+We will consider the process
+\[
+e^+ e^- \rightarrow \gamma^* \rightarrow q \bar{q}.
+\]
+%
+We work under the assumption that only the photon-exchange diagram is relevant. 
+%
+Furthermore, we assume that we are in the centre-of-mass (CM) frame of the colliding electrons (i.e.\ they are back-to-back) and assume negligible particle masses. 
+%
+The CM energy is denoted by $\sqrt{s}$. 
+%
+We denote the momenta of incoming electron-positron pair by $p_1$ and $p_2$, and those of the outgoing quarks by $q_1$ and $q_2$. 
+
+During the lecture, we saw that the matrix element is given by
+\[
+iM_{e^+e- \to q\bar{q}} = \frac{ie^2 Q_q}{(q_1+q_2)^2} \bar{u}(p_1)\gamma^{\mu}v(p_2)\, \bar{v}(q_2)\gamma_{\mu} u(q_1)\,,
+\]
+with $Q_q$ the charge of the quark, and $e$ the electromagnetic coupling. 
+
+
+\begin{enumerate}
+	\item Using Dirac algebra, show that the squared matrix element  is equal to $|M|^2 = e^4 Q_q^2 N_c(1+\cos^2\theta)$, where $\theta$ is the angle between the outgoing quark and the electron (in the CM frame), and
+	the number of colours is denoted by $N_c$. Remember that all particles are taken to be massless. You will need
+	\[
+	{\rm Tr}[\gamma^{\mu}\gamma^{\nu}\gamma^{\sigma}\gamma^{\rho}] = 4\left(
+	g^{\mu\nu}g^{\sigma\rho}
+	- g^{\mu\sigma}g^{\nu\rho}
+	+ g^{\mu\rho}g^{\nu\sigma}
+	\right).
+	\]
+	\item Draw the distribution in $\theta$  of the squared matrix element from $\theta = 0$ to $\theta = \pi$.
+	\item Starting from the defining expression of the Lorentz-invariant phase space for two particles, i.e.
+	\[
+	\int d\Phi_2 = \int \frac{d^3q_1}{2E_q (2\pi)^3}\frac{d^3q_2}{2E_{\bar{q}} (2\pi)^3}(2\pi)^4 \delta(q_1^2)\delta(q_2^2)\delta^4(p_1 + p_2 - q_1 -q_2)\,,
+	\]
+	 show that 
+	\[
+	\int d\Phi_2 = \frac{1}{8\pi} \int d \cos\theta\,.
+	\]
+	Why are we allowed to integrate over the azimuthal angle $\phi$? 
+\end{enumerate}
+
+
+Taken together, we find that the total cross section for $e^+ e^- \to \gamma^* \to q\bar{q}$ becomes
+\[
+\sigma(e^+e^- \to \gamma^* \to q\bar{q}) = \frac{4\pi \alpha_{\rm EM}^2}{3s} N_c \sum Q_q^2 \theta(m_q^2 > s)\,.
+\]
+These results will be used to write and validate our Monte Carlo. 
+
+%\newpage
+
+\section*{Part 2: Our first event generator}
+Instead of computing the cross section analytically, we now want to set up a program that calculates it numerically. 
+%
+We will assume you work in python, but you are free to use any other language you are comfortable with. 
+%
+Random numbers between $0$ and $1$ may be obtained using 
+\begin{verbatim}
+	import random
+	r = random.uniform(0,1)
+\end{verbatim}
+%
+\begin{enumerate}
+	\item Using the fact that 
+	\[
+	\int^x_{x_{\rm min}} dx f(x)  = r \int_{x_{\rm min}}^{x_{\rm max}} dx f(x)
+	\]
+	write a program returns a sample of $x$ values that is distributed according to $f(x) = 1+x^2$ with $x_{\rm min} = -1$ and $x_{\rm max} = 1$. 
+	%
+	Hint: one can use a bisection method to find the solution to an equation of the form $g(x) = 0$.
+	%
+	Plot the resulting distribution in $x$. Does it agree with your expectation (part 1, item 2)? How many samples does one need to get a satisfactory distribution?
+	\item Write a program that returns a sample of $x$ values distributed according to $f(x) = 1+x^2$ using an accept-and-reject method. Which of (1) and (2) is faster?
+	\item Numerically compute the integral of 
+	\[
+	\int_{-1}^1 dx (1+x^2)\,.
+	\]
+	\item How can you compute the integral and at the same time obtain a set of $x$ values distributed according to $f(x)$?
+	\item Defining now all relevant constants, which we set to $\alpha_{\rm EM} = 1/137$, $N_c = 3$, $Q_u = Q_c = 2/3$, $Q_d = Q_s = Q_b = -1/3$, plot the total cross section of $e^+e^- \to \gamma^* \to q\bar{q}$ in pb as a function of the scattering energy $s$ for $\sqrt{s} = 1-100$ GeV. 
+\end{enumerate}
+
+You've now written an LO event generator that computes $\sigma$ and $d \sigma / d \cos\theta$!
+
+%\newpage
+\section*{Part 3: Our first NLO event generator}
+At NLO we have to deal with the soft and collinear singularities that pop up. 
+%
+In this exercise, we will consider a toy model, and compute the NLO cross section in two ways: \emph{subtraction}  and \emph{slicing}.
+%
+This toy model only has one divergence, and hides some of the complexities one has to deal with when calculating an actual NLO correction to e.g.\ the $e^+ e^- \to q\bar{q}$ process considered before. 
+
+Consider a system radiating off massless particles with energy $x$. 
+%
+At Born level, we do not have any emissions, and $x = 0$. 
+%
+At NLO we need to take into account loop corrections and real emission corrections, where the former is plagues by a virtual divergence, whereas the latter as a singularity when $x \to 0$. 
+%
+We define the following differential cross sections for the Born, Virtual and Real contributions:
+\begin{align}\nonumber
+\left(\frac{d\sigma}{dx}\right)_{\rm B} &= B \delta(x)\,,  \\
+\nonumber
+\left(\frac{d\sigma}{dx}\right)_{\rm V} &= \alpha\left(\frac{B}{2\epsilon} + V_f\right) \delta(x)\,, \\
+\left(\frac{d\sigma}{dx}\right)_{\rm R} &= \alpha \frac{R(x)}{x}\,.
+\end{align}
+Here we have introduced a dimensional regulator $\epsilon$, in addition to arbitary constants $B$ and $V_f$, the coupling $\alpha$, and a to-be-specified function $R(x)$. 
+%
+To compute the total cross section we need to evaluate
+\begin{align}
+\sigma = \lim_{\epsilon \to 0} \int_0^1 dx \,  x^{-2\epsilon}\left[\left(\frac{d\sigma}{dx}\right)_{\rm B}  + \left(\frac{d\sigma}{dx}\right)_{\rm V}  + \left(\frac{d\sigma}{dx}\right)_{\rm R} \right] \equiv \sigma_B + \sigma_V + \sigma_R\,.
+\end{align}
+Clearly, we cannot dump this on a computer as-is: there is a limit of $\epsilon \to 0$ to be taken care of. 
+%
+
+\begin{enumerate}
+	\item Compute the contributions from the Born and virtual terms, $\sigma_B+ \sigma_V$.
+	\item \emph{Subtraction}: For the subtraction technique, we write the real contribution as
+	\[
+	\sigma_R = \alpha \left[\int_0^1 dx\,  x^{-2\epsilon} \frac{R(x) - R(0)}{x} + R(0)\int_0^1 dx \, x^{-1-2\epsilon} \right].
+	\]
+	\begin{enumerate}
+		\item Evaluate the rightmost integral. 
+		% answer is -1/(2\epsilon)
+		\item What must be the condition on $R(0)$ such that the divergence in the virtual contribution cancels?
+		%R(0) = B$
+		\item What must be the condition on $R(x)$ such that the first integral is integrable in 4 dimensions ($\epsilon = 0$)?
+		% R(x) cannot have any additional divergence at x=1 (we already know that R(0)=B) is required and needs to be finite. 
+		\item Write an expression for the total cross section $\sigma$ that can be evaluated directly in 4 dimensions. 
+		% sigma = B + a*Vf + a*int_0^1 dx (R(x)-B)/x 
+	\end{enumerate}
+	\item \emph{Slicing}: In slicing, we introduce a cutoff parameter $\delta \ll 1$ to write
+	\[
+	\int_0^1 dx = \int_0^{\delta} dx + \int_{\delta}^1 dx\,.
+	\]
+	\begin{enumerate} 
+		\item Approximate $R(x) = R(0)$ when $x < \delta$. Compute the contribution from the region $x < \delta$ analytically, and expand in the limit that $\delta \to 0, \epsilon \to 0$ with $\delta \gg \epsilon$. 
+		% int_0^delta x^(-1-2eps) = -delta^(-2eps)/(2eps) = -1/(2eps) + log(delta) - eps*log(delta)^2 + ...
+		%
+		What must be the condition on $R(0)$ to cancel the virtual divergence?
+		% Same, R(0) = B. 
+		\item Write the contribution for $x > \delta$ in a form suitable for numerical integration. 
+		% int_delta^1 dx R(x)/x can be evaluated directly
+	\end{enumerate}
+	\item \emph{Monte Carlo implementation:} We now pick a simple function satisfying the required properties
+	\[
+	R(x) = B(1+x(1-x))\,.
+	\]
+	With this we obtain a total cross section of
+	\[
+	\sigma = B\left(1 + \alpha\left(\frac{V_f}{B} + \frac{1}{2}\right)\right).
+	\]
+	\begin{enumerate}
+		\item Convince yourself of this answer in three ways: using Eq.~(2) directly, using \emph{subtraction} and using \emph{slicing}. 
+		\item Write a Monte Carlo program that computes $\sigma$ using \emph{subtraction} and \emph{slicing}. Take $B = 2$, $V_f = 1$ and $\alpha = 0.1$ for the numerical evaluation of the cross section. Which method is more stable? Can you pick $\delta$ arbitrary small? 
+	\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
