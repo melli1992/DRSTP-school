@@ -18,6 +18,9 @@ def soln1(nsamples=100000):
 
     # solve int_xmin^x dx f(x) = r int_xmin^xmax dx f(x)
     # gives us x^3 + 3x + (4 - 8r) = 0 == g(x)
+
+
+    # either use bisection (slow)
     def g(x):
         return x**3 + 3*x + (4 - 8*r)
 
@@ -29,8 +32,12 @@ def soln1(nsamples=100000):
             b = m
         else:
             a = m
-
+    
     return 0.5 * (a + b)
+  
+    # or use exact (fast)
+    exact = -(1./(-2. + 4.*r + (5. - 16*r + 16*r**2)**0.5)**(1./3.)) + (-2. + 4.*r + (5. - 16.*r + 16*r**2)**0.5)**(1./3.)
+    return exact
   
   # Generate samples
   samples = [sample_x() for _ in range(nsamples)]
@@ -62,8 +69,6 @@ def soln3(nsamples):
   xs = [sample_x() for _ in range(nsamples)]
   fx = [f(x) for x in xs]
   return sum(fx)/nsamples*2 # *2 because we sampled between 0,1 so this is a jacobian!
-   
-# compute integral of f(x) from -1 to 1 numerically
 
 # sum of f(x)
 sumf    = 0
@@ -112,8 +117,8 @@ print("Integral:", soln3(nsamples))
 samples3, integral = soln4(nsamples)
 # ---- Plot histogram ----
 plt.hist(samples1, bins=50, density=True, alpha=0.6, label="solution 1")
-# plt.hist(samples2, bins=50, density=True, alpha=0.6, label="solution 2")
-plt.hist(samples3, bins=50, density=True, alpha=0.6, label="solution 3")
+plt.hist(samples2, bins=50, density=True, alpha=0.6, label="solution 2")
+plt.hist(samples3, bins=50, density=True, alpha=0.6, label="solution 3, 4")
 
 # ---- Plot true distribution ----
 x = np.linspace(-1, 1, 400)
@@ -130,9 +135,9 @@ plt.legend()
 plt.show()
 
 
-# now last one
+# solution 5 - compute the e+e- total xsec
 def soln5(nsamples):
-  samples3, integral = soln4(nsamples)
+  samples, integral = soln4(nsamples) #-> samples could be used to plot dsigma/dcos(theta)
   aEM = 1./137
   nc = 3.
   Qu = 2./3

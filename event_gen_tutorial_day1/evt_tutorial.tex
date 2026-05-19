@@ -229,7 +229,7 @@ Random numbers between $0$ and $1$ may be obtained using
 	\]
 	write a program returns a sample of $x$ values that is distributed according to $f(x) = 1+x^2$ with $x_{\rm min} = -1$ and $x_{\rm max} = 1$. 
 	%
-	Hint: one can use a bisection method to find the solution to an equation of the form $g(x) = 0$.
+	Hint: one can use a numerical bisection method to find the solution to an equation of the form $g(x) = 0$, or you can solve the equation analytically. 
 	%
 	Plot the resulting distribution in $x$. Does it agree with your expectation (part 1, item 2)? How many samples does one need to get a satisfactory distribution?
 	\item Write a program that returns a sample of $x$ values distributed according to $f(x) = 1+x^2$ using an accept-and-reject method. Which of (1) and (2) is faster?
@@ -237,7 +237,7 @@ Random numbers between $0$ and $1$ may be obtained using
 	\[
 	\int_{-1}^1 dx (1+x^2)\,.
 	\]
-	\item How can you compute the integral and at the same time obtain a set of $x$ values distributed according to $f(x)$?
+	\item How can you compute the integral and at the same time obtain a set of $x$ values distributed according to $f(x)$? Write a program that does this. 
 	\item Defining now all relevant constants, which we set to $\alpha_{\rm EM} = 1/137$, $N_c = 3$, $Q_u = Q_c = 2/3$, $Q_d = Q_s = Q_b = -1/3$, plot the total cross section of $e^+e^- \to \gamma^* \to q\bar{q}$ in pb as a function of the scattering energy $s$ for $\sqrt{s} = 1-100$ GeV. 
 \end{enumerate}
 
@@ -247,17 +247,17 @@ You've now written an LO event generator that computes $\sigma$ and $d \sigma / 
 \section*{Part 3: Our first NLO event generator}
 At NLO we have to deal with the soft and collinear singularities that pop up. 
 %
-In this exercise, we will consider a toy model, and compute the NLO cross section in two ways: \emph{subtraction}  and \emph{slicing}.
+In this exercise, we will consider a toy model, and compute the NLO cross section numerically using two different techniques: \emph{subtraction}  and \emph{slicing}.
 %
 This toy model only has one divergence, and hides some of the complexities one has to deal with when calculating an actual NLO correction to e.g.\ the $e^+ e^- \to q\bar{q}$ process considered before. 
 
-Consider a system radiating off massless particles with energy $x$. 
+Consider a system radiating off massless particles that carry away a collective energy of $x$. 
 %
 At Born level, we do not have any emissions, and $x = 0$. 
 %
-At NLO we need to take into account loop corrections and real emission corrections, where the former is plagues by a virtual divergence, whereas the latter as a singularity when $x \to 0$. 
+At NLO we need to take into account loop corrections and real emission corrections. 
 %
-We define the following differential cross sections for the Born, Virtual and Real contributions:
+We define the following differential cross sections for the Born, Virtual and Real contributions, after dimensional regularisation to compute the loop integrals:
 \begin{align}\nonumber
 \left(\frac{d\sigma}{dx}\right)_{\rm B} &= B \delta(x)\,,  \\
 \nonumber
@@ -274,7 +274,7 @@ Clearly, we cannot dump this on a computer as-is: there is a limit of $\epsilon 
 %
 
 \begin{enumerate}
-	\item Compute the contributions from the Born and virtual terms, $\sigma_B+ \sigma_V$.
+	\item Compute the contributions from the Born and virtual terms, i.e.\ the term $\sigma_B+ \sigma_V$.
 	\item \emph{Subtraction}: For the subtraction technique, we write the real contribution as
 	\[
 	\sigma_R = \alpha \left[\int_0^1 dx\,  x^{-2\epsilon} \frac{R(x) - R(0)}{x} + R(0)\int_0^1 dx \, x^{-1-2\epsilon} \right].
@@ -294,7 +294,7 @@ Clearly, we cannot dump this on a computer as-is: there is a limit of $\epsilon 
 	\int_0^1 dx = \int_0^{\delta} dx + \int_{\delta}^1 dx\,.
 	\]
 	\begin{enumerate} 
-		\item Approximate $R(x) = R(0)$ when $x < \delta$. Compute the contribution from the region $x < \delta$ analytically, and expand in the limit that $\delta \to 0, \epsilon \to 0$ with $\delta \gg \epsilon$. 
+		\item Approximate $R(x) \to R(0)$ when $x < \delta$. Compute the contribution from the region $x < \delta$ analytically, and expand in the limit that $\delta \to 0, \epsilon \to 0$ with $\delta \gg \epsilon$. 
 		% int_0^delta x^(-1-2eps) = -delta^(-2eps)/(2eps) = -1/(2eps) + log(delta) - eps*log(delta)^2 + ...
 		%
 		What must be the condition on $R(0)$ to cancel the virtual divergence?
